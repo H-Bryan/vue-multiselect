@@ -13,7 +13,7 @@ function includes (str, query) {
   if (str === undefined) str = 'undefined'
   if (str === null) str = 'null'
   if (str === false) str = 'false'
-  const text = str.toString().toLowerCase()
+  const text = str.toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
   return text.indexOf(query.trim()) !== -1
 }
 
